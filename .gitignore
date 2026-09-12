@@ -1,0 +1,20 @@
+# Environment variables and API secrets
+.env
+*.env
+.env.*
+!.env.example
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.pkl
+*.json
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Streamlit secrets
+.streamlit/secrets.toml
