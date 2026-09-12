@@ -240,7 +240,7 @@ The application includes optional real-time atmospheric data ingestion:
 
 ### Setup
 ```bash
-# 1. Clone or navigate to the project directory
+# 1. Clone project directory
 cd inference
 
 # 2. Create and activate a virtual environment
