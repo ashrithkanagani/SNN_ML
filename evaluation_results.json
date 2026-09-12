@@ -1,0 +1,586 @@
+{
+  "snn_metrics": {
+    "accuracy": 83.0,
+    "precision": 73.26,
+    "recall": 67.7,
+    "f1_score": 69.56,
+    "confusion_matrix": [
+      [
+        2,
+        5,
+        0,
+        0
+      ],
+      [
+        2,
+        38,
+        2,
+        0
+      ],
+      [
+        0,
+        5,
+        8,
+        1
+      ],
+      [
+        0,
+        0,
+        2,
+        35
+      ]
+    ],
+    "classification_report": {
+      "Good": {
+        "precision": 0.5,
+        "recall": 0.2857142857142857,
+        "f1-score": 0.36363636363636365,
+        "support": 7.0
+      },
+      "Moderate": {
+        "precision": 0.7916666666666666,
+        "recall": 0.9047619047619048,
+        "f1-score": 0.8444444444444444,
+        "support": 42.0
+      },
+      "Poor": {
+        "precision": 0.6666666666666666,
+        "recall": 0.5714285714285714,
+        "f1-score": 0.6153846153846154,
+        "support": 14.0
+      },
+      "Severe": {
+        "precision": 0.9722222222222222,
+        "recall": 0.9459459459459459,
+        "f1-score": 0.958904109589041,
+        "support": 37.0
+      },
+      "accuracy": 0.83,
+      "macro avg": {
+        "precision": 0.7326388888888888,
+        "recall": 0.676962676962677,
+        "f1-score": 0.6955923832636162,
+        "support": 100.0
+      },
+      "weighted avg": {
+        "precision": 0.8205555555555555,
+        "recall": 0.83,
+        "f1-score": 0.8210695788230035,
+        "support": 100.0
+      }
+    }
+  },
+  "experiment_table": [
+    {
+      "Experiment": "1. Baseline SNN (with dW/T bug)",
+      "Architecture": "22 \u2192 256 \u2192 128 \u2192 4",
+      "T": 100,
+      "LR": "1e-3",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Bernoulli Rate",
+      "Validation Accuracy": "77.50%",
+      "Validation F1": "77.67%"
+    },
+    {
+      "Experiment": "2. Gradient Scale Correction (dW/T fix)",
+      "Architecture": "22 \u2192 256 \u2192 128 \u2192 4",
+      "T": 100,
+      "LR": "3e-4",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Bernoulli Rate",
+      "Validation Accuracy": "87.50%",
+      "Validation F1": "84.52%"
+    },
+    {
+      "Experiment": "3. Deterministic Rate Encoding",
+      "Architecture": "22 \u2192 256 \u2192 128 \u2192 4",
+      "T": 100,
+      "LR": "3e-4",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Deterministic",
+      "Validation Accuracy": "83.75%",
+      "Validation F1": "79.05%"
+    },
+    {
+      "Experiment": "4. Compact Architecture",
+      "Architecture": "22 \u2192 128 \u2192 64 \u2192 4",
+      "T": 100,
+      "LR": "3e-4",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Bernoulli Rate",
+      "Validation Accuracy": "87.50%",
+      "Validation F1": "79.01%"
+    },
+    {
+      "Experiment": "5. Deep Architecture",
+      "Architecture": "22 \u2192 256 \u2192 128 \u2192 64 \u2192 4",
+      "T": 100,
+      "LR": "3e-4",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Bernoulli Rate",
+      "Validation Accuracy": "85.00%",
+      "Validation F1": "80.12%"
+    },
+    {
+      "Experiment": "6. Expanded Features (50-dim)",
+      "Architecture": "50 \u2192 256 \u2192 128 \u2192 4",
+      "T": 100,
+      "LR": "3e-4",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Bernoulli Rate",
+      "Validation Accuracy": "85.00%",
+      "Validation F1": "80.70%"
+    },
+    {
+      "Experiment": "7. Optimal SNN + Val Checkpointing",
+      "Architecture": "22 \u2192 256 \u2192 128 \u2192 4",
+      "T": 100,
+      "LR": "3e-4",
+      "Tau": 20.0,
+      "Threshold": 0.5,
+      "Encoding": "Bernoulli Rate",
+      "Validation Accuracy": "86.25%",
+      "Validation F1": "81.04%"
+    }
+  ],
+  "comparison_table": [
+    {
+      "Model": "SNN (LIF Spiking)",
+      "Accuracy": 83.0,
+      "Precision": 73.26,
+      "Recall": 67.7,
+      "F1 Score": 69.56
+    },
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 82.0,
+      "Precision": 73.14,
+      "Recall": 68.89,
+      "F1 Score": 70.48
+    },
+    {
+      "Model": "Random Forest",
+      "Accuracy": 93.0,
+      "Precision": 96.43,
+      "Recall": 78.57,
+      "F1 Score": 82.26
+    },
+    {
+      "Model": "MLP (ANN)",
+      "Accuracy": 81.0,
+      "Precision": 69.42,
+      "Recall": 64.21,
+      "F1 Score": 65.85
+    },
+    {
+      "Model": "Gradient Boosting",
+      "Accuracy": 94.0,
+      "Precision": 89.81,
+      "Recall": 84.52,
+      "F1 Score": 86.03
+    }
+  ],
+  "detailed_evaluations": {
+    "SNN": {
+      "model_name": "SNN (LIF Spiking)",
+      "accuracy": 0.83,
+      "precision": 0.7326388888888888,
+      "recall": 0.676962676962677,
+      "f1": 0.6955923832636162,
+      "confusion_matrix": [
+        [
+          2,
+          5,
+          0,
+          0
+        ],
+        [
+          2,
+          38,
+          2,
+          0
+        ],
+        [
+          0,
+          5,
+          8,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          35
+        ]
+      ],
+      "classification_report": {
+        "Good": {
+          "precision": 0.5,
+          "recall": 0.2857142857142857,
+          "f1-score": 0.36363636363636365,
+          "support": 7.0
+        },
+        "Moderate": {
+          "precision": 0.7916666666666666,
+          "recall": 0.9047619047619048,
+          "f1-score": 0.8444444444444444,
+          "support": 42.0
+        },
+        "Poor": {
+          "precision": 0.6666666666666666,
+          "recall": 0.5714285714285714,
+          "f1-score": 0.6153846153846154,
+          "support": 14.0
+        },
+        "Severe": {
+          "precision": 0.9722222222222222,
+          "recall": 0.9459459459459459,
+          "f1-score": 0.958904109589041,
+          "support": 37.0
+        },
+        "accuracy": 0.83,
+        "macro avg": {
+          "precision": 0.7326388888888888,
+          "recall": 0.676962676962677,
+          "f1-score": 0.6955923832636162,
+          "support": 100.0
+        },
+        "weighted avg": {
+          "precision": 0.8205555555555555,
+          "recall": 0.83,
+          "f1-score": 0.8210695788230035,
+          "support": 100.0
+        }
+      }
+    },
+    "Logistic Regression": {
+      "model_name": "Logistic Regression",
+      "accuracy": 0.82,
+      "precision": 0.7313501144164759,
+      "recall": 0.6888674388674388,
+      "f1": 0.7047785547785548,
+      "confusion_matrix": [
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          3,
+          37,
+          1,
+          1
+        ],
+        [
+          0,
+          5,
+          7,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          35
+        ]
+      ],
+      "classification_report": {
+        "Good": {
+          "precision": 0.5,
+          "recall": 0.42857142857142855,
+          "f1-score": 0.46153846153846156,
+          "support": 7.0
+        },
+        "Moderate": {
+          "precision": 0.8043478260869565,
+          "recall": 0.8809523809523809,
+          "f1-score": 0.8409090909090909,
+          "support": 42.0
+        },
+        "Poor": {
+          "precision": 0.7,
+          "recall": 0.5,
+          "f1-score": 0.5833333333333334,
+          "support": 14.0
+        },
+        "Severe": {
+          "precision": 0.9210526315789473,
+          "recall": 0.9459459459459459,
+          "f1-score": 0.9333333333333333,
+          "support": 37.0
+        },
+        "accuracy": 0.82,
+        "macro avg": {
+          "precision": 0.7313501144164759,
+          "recall": 0.6888674388674388,
+          "f1-score": 0.7047785547785548,
+          "support": 100.0
+        },
+        "weighted avg": {
+          "precision": 0.8116155606407323,
+          "recall": 0.82,
+          "f1-score": 0.8124895104895106,
+          "support": 100.0
+        }
+      }
+    },
+    "Random Forest": {
+      "model_name": "Random Forest",
+      "accuracy": 0.93,
+      "precision": 0.9642857142857143,
+      "recall": 0.7857142857142857,
+      "f1": 0.8226495726495726,
+      "confusion_matrix": [
+        [
+          2,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          42,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          37
+        ]
+      ],
+      "classification_report": {
+        "Good": {
+          "precision": 1.0,
+          "recall": 0.2857142857142857,
+          "f1-score": 0.4444444444444444,
+          "support": 7.0
+        },
+        "Moderate": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1-score": 0.9230769230769231,
+          "support": 42.0
+        },
+        "Poor": {
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.9230769230769231,
+          "support": 14.0
+        },
+        "Severe": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 37.0
+        },
+        "accuracy": 0.93,
+        "macro avg": {
+          "precision": 0.9642857142857143,
+          "recall": 0.7857142857142857,
+          "f1-score": 0.8226495726495726,
+          "support": 100.0
+        },
+        "weighted avg": {
+          "precision": 0.94,
+          "recall": 0.93,
+          "f1-score": 0.9180341880341881,
+          "support": 100.0
+        }
+      }
+    },
+    "MLP (ANN)": {
+      "model_name": "MLP (ANN)",
+      "accuracy": 0.81,
+      "precision": 0.6942444080741954,
+      "recall": 0.642052767052767,
+      "f1": 0.6584753897445127,
+      "confusion_matrix": [
+        [
+          2,
+          4,
+          1,
+          0
+        ],
+        [
+          3,
+          37,
+          1,
+          1
+        ],
+        [
+          0,
+          6,
+          6,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          36
+        ]
+      ],
+      "classification_report": {
+        "Good": {
+          "precision": 0.4,
+          "recall": 0.2857142857142857,
+          "f1-score": 0.3333333333333333,
+          "support": 7.0
+        },
+        "Moderate": {
+          "precision": 0.7872340425531915,
+          "recall": 0.8809523809523809,
+          "f1-score": 0.8314606741573034,
+          "support": 42.0
+        },
+        "Poor": {
+          "precision": 0.6666666666666666,
+          "recall": 0.42857142857142855,
+          "f1-score": 0.5217391304347826,
+          "support": 14.0
+        },
+        "Severe": {
+          "precision": 0.9230769230769231,
+          "recall": 0.972972972972973,
+          "f1-score": 0.9473684210526315,
+          "support": 37.0
+        },
+        "accuracy": 0.81,
+        "macro avg": {
+          "precision": 0.6942444080741954,
+          "recall": 0.642052767052767,
+          "f1-score": 0.6584753897445127,
+          "support": 100.0
+        },
+        "weighted avg": {
+          "precision": 0.7935100927441351,
+          "recall": 0.81,
+          "f1-score": 0.796116610529744,
+          "support": 100.0
+        }
+      }
+    },
+    "Gradient Boosting": {
+      "model_name": "Gradient Boosting",
+      "accuracy": 0.94,
+      "precision": 0.8981060606060607,
+      "recall": 0.8452380952380952,
+      "f1": 0.8603010862433477,
+      "confusion_matrix": [
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          1,
+          40,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          14,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          37
+        ]
+      ],
+      "classification_report": {
+        "Good": {
+          "precision": 0.75,
+          "recall": 0.42857142857142855,
+          "f1-score": 0.5454545454545454,
+          "support": 7.0
+        },
+        "Moderate": {
+          "precision": 0.9090909090909091,
+          "recall": 0.9523809523809523,
+          "f1-score": 0.9302325581395349,
+          "support": 42.0
+        },
+        "Poor": {
+          "precision": 0.9333333333333333,
+          "recall": 1.0,
+          "f1-score": 0.9655172413793104,
+          "support": 14.0
+        },
+        "Severe": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 37.0
+        },
+        "accuracy": 0.94,
+        "macro avg": {
+          "precision": 0.8981060606060607,
+          "recall": 0.8452380952380952,
+          "f1-score": 0.8603010862433477,
+          "support": 100.0
+        },
+        "weighted avg": {
+          "precision": 0.9349848484848485,
+          "recall": 0.94,
+          "f1-score": 0.9340519063935262,
+          "support": 100.0
+        }
+      }
+    }
+  },
+  "class_distribution": {
+    "train": {
+      "Good": 28,
+      "Moderate": 169,
+      "Poor": 56,
+      "Severe": 146
+    },
+    "test": {
+      "Good": 7,
+      "Moderate": 42,
+      "Poor": 14,
+      "Severe": 37
+    },
+    "total": {
+      "Good": 35,
+      "Moderate": 211,
+      "Poor": 70,
+      "Severe": 183
+    }
+  },
+  "training_info": {
+    "architecture": "22 \u2192 256 \u2192 128 \u2192 4",
+    "neuron": "Leaky Integrate-and-Fire (LIF)",
+    "membrane_leak": 0.9512,
+    "threshold": 0.5,
+    "timesteps": 100,
+    "encoding": "Bernoulli Rate Encoding",
+    "monte_carlo_runs": 20,
+    "optimizer": "Adam (Piecewise-Linear Surrogate Gradient)",
+    "learning_rate": 0.0003,
+    "temperature_scaling": 10.0,
+    "best_checkpoint_epoch": 25,
+    "best_validation_accuracy": 82.5,
+    "best_validation_f1": 69.74
+  }
+}

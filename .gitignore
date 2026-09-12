@@ -10,6 +10,9 @@ __pycache__/
 *$py.class
 *.pkl
 *.json
+!snn_model.pkl
+!preprocess_bundle.pkl
+!evaluation_results.json
 
 # Virtual environments
 venv/
