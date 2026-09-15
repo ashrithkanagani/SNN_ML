@@ -155,13 +155,23 @@ def fetch_openaq_live(
             param = s.get("parameter", {}).get("name", "").lower()
             if param in param_map:
                 std_name = param_map[param]
-                val = float(s.get("latest", {}).get("value", 0.0) or 0.0)
+                latest_info = s.get("latest")
+                if not latest_info or not isinstance(latest_info, dict):
+                    continue
+                raw_val = latest_info.get("value")
+                if raw_val is None or float(raw_val) < 0:
+                    continue
+                val = float(raw_val)
                 unit = s.get("parameter", {}).get("units", "").lower()
                 # If CO is in ppm or µg/m³, convert
                 if std_name == "CO" and "µg" in unit:
                     val /= 1000.0
                 pollutants[std_name] = round(val, 2 if std_name == "CO" else 1)
                 available.append(std_name)
+
+        # If OpenAQ station has no active sensor feeds, fall back to Open-Meteo
+        if len(available) < 2:
+            return fetch_open_meteo_live(lat, lon, location_name=f"{location_name}")
 
         # Handle any missing pollutants via training median imputation
         from train_model import POLLUTANTS

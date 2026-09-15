@@ -302,8 +302,10 @@ def page_prediction(predictor: AQIPredictor):
             if live_data.is_live:
                 st.session_state["live_reading"] = live_data
                 for p, val in live_data.pollutants.items():
+                    st.session_state[f"input_{p}"] = float(val)
                     st.session_state[f"pollutant_{p}"] = float(val)
                 st.success(f"Loaded live data for {city_sel}!")
+                st.rerun()
             else:
                 st.error(live_data.error_message or "Failed to connect to live provider.")
 
